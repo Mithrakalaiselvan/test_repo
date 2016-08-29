@@ -17,24 +17,52 @@ var notFound = React.createClass({
   }
   });
 
+var NewOneComp = React.createClass({
+   render: function() {
+  return(<div>
+  <h2>New one </h2>
+  </div>)
 
+  }
+  });
 
-var Album = React.createClass({
-render: function()
- {
-   return(
-      <div className="col-sm-2 col-md-2 col-half-offset">
-              <a href={this.props.album.previewUrl}>
+var CsvUploadComp = React.createClass({
 
-              <img id="" src={this.props.album.artworkUrl100} className="img-responsive" alt="Image" />
-              </a>
-              <p className="wrap"><b>{this.props.album.trackName}</b></p>
-              <p className="artist">{this.props.album.artistName}</p>
-     </div>
-   );
- }
-});
+  uploadFile: function () {
+        var fd = new FormData();    
+        fd.append('file', this.refs.file.getDOMNode().files[0]);
 
+        $.ajax({
+            url: '/upload',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+                alert(data);
+            } 
+        });
+    },
+  render: function() {
+    return(<div>
+  <section id="upload-data-panel">
+    <form id="upload-form"  action={this.uploadFile} method="post" enctype="multipart/form-data">
+        
+           
+           
+              
+                <input type="file" name="csvdata" accept="text/cvs" />
+            
+           
+                <input type="submit" value="Submit" onClick={this.uploadFile}/>
+            
+       
+    </form>
+  </section>
+    </div>)
+  }
+
+  });
 
 
 
@@ -82,7 +110,15 @@ var App = React.createClass({
 
   var listAlbum = this.state.data.map(function(album) {
       return (
-       <Album  album={album} />
+        <div className="col-sm-5">
+              <a href={album.previewUrl}>
+
+              <img id="" src={album.artworkUrl100} className="img-responsive" alt="Image" />
+              </a>
+              <p><b>{album.trackName}</b></p>
+              <p>{album.artistName}</p>
+
+            </div>
       );
     });
   }catch(err){
@@ -93,10 +129,13 @@ var App = React.createClass({
 
     return (
       <div>
-          
-        
+
+          <ul>
+          <li><Link to={'csvUpload'}>Upload Csv</Link></li>
+          <li><Link to={'newOne'}>new one</Link></li>
+          </ul>
         <div className="container-fluid bg-3 text-center">
-          <h3 className="col-half-offset">Albums</h3><br />
+          <h3>Albums</h3><br />
           <div className="row" >
             {listAlbum}
             </div>
@@ -114,6 +153,9 @@ var App = React.createClass({
   ReactDOM.render((
     <Router history = {BrowserHistory}>
         <Route path = "/" component = {App} />
-         <Route path = "*" status="404" component = {notFound}/>
-         </Router> 
+         <Route path = "csvUpload" component = {CsvUploadComp} />
+         <Route path = "newOne" component = {NewOneComp} />
+         <Route path = "*" component = {notFound}/>
+      
+   </Router> 
    ),document.getElementById('main'));
