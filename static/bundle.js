@@ -75,7 +75,6 @@
 	var Album = React.createClass({
 	  displayName: 'Album',
 
-
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -101,7 +100,6 @@
 	      )
 	    );
 	  }
-
 	});
 
 	var App = React.createClass({
