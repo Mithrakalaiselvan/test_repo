@@ -16,27 +16,7 @@ var notFound = React.createClass({
 
   }
   });
-<<<<<<< HEAD
 
-
-
-var Album = React.createClass({
-render: function()
- {
-   return(
-      <div className="col-sm-2 col-md-2 col-half-offset">
-              <a href={this.props.album.previewUrl}>
-
-              <img id="" src={this.props.album.artworkUrl100} className="img-responsive" alt="Image" />
-              </a>
-              <p className="wrap"><b>{this.props.album.trackName}</b></p>
-              <p className="artist">{this.props.album.artistName}</p>
-     </div>
-   );
- }
-});
-
-=======
 var NewOneComp = React.createClass({
    render: function() {
   return(<div>
@@ -83,7 +63,6 @@ var CsvUploadComp = React.createClass({
   }
 
   });
->>>>>>> Release#2
 
 
 
@@ -131,9 +110,6 @@ var App = React.createClass({
 
   var listAlbum = this.state.data.map(function(album) {
       return (
-<<<<<<< HEAD
-       <Album  album={album} />
-=======
         <div className="col-sm-5">
               <a href={album.previewUrl}>
 
@@ -143,7 +119,6 @@ var App = React.createClass({
               <p>{album.artistName}</p>
 
             </div>
->>>>>>> Release#2
       );
     });
   }catch(err){
@@ -154,19 +129,13 @@ var App = React.createClass({
 
     return (
       <div>
-          
-<<<<<<< HEAD
-        
-        <div className="container-fluid bg-3 text-center">
-          <h3 className="col-half-offset">Albums</h3><br />
-=======
+
           <ul>
           <li><Link to={'csvUpload'}>Upload Csv</Link></li>
           <li><Link to={'newOne'}>new one</Link></li>
           </ul>
         <div className="container-fluid bg-3 text-center">
           <h3>Albums</h3><br />
->>>>>>> Release#2
           <div className="row" >
             {listAlbum}
             </div>
@@ -184,15 +153,9 @@ var App = React.createClass({
   ReactDOM.render((
     <Router history = {BrowserHistory}>
         <Route path = "/" component = {App} />
-<<<<<<< HEAD
-         <Route path = "*" status="404" component = {notFound}/>
-         </Router> 
-   ),document.getElementById('main'));
-=======
          <Route path = "csvUpload" component = {CsvUploadComp} />
          <Route path = "newOne" component = {NewOneComp} />
          <Route path = "*" component = {notFound}/>
       
    </Router> 
    ),document.getElementById('main'));
->>>>>>> Release#2

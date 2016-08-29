@@ -39,8 +39,6 @@ app.use(busboy());
       
 });  
 
-<<<<<<< HEAD
-=======
 /*app.post('/upload', function(req, res) {
         // the name under "files" must correspond to the name of the
         // file input field in the submitted form (here: "csvdata")
@@ -95,10 +93,6 @@ app.post('/upload', function(req, res){
   form.parse(req);
 
 });
-
-
-
->>>>>>> Release#2
 app.listen(8082, function(){
       console.log('itune app listening on port 8082');
 });
