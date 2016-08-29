@@ -1,9 +1,15 @@
 .img-responsive
 {
+<<<<<<< HEAD
     width: 100%; 
     border-radius : 5px;
     z-index: 1;
     
+=======
+    width: 50%; 
+    border-radius : 15px;
+    margin-left: 25%;
+>>>>>>> Release#2
 }
 
 .jumbotron{
@@ -14,6 +20,7 @@
     background-color: #f1f1f1;
 }
 
+<<<<<<< HEAD
 .col-sm-2{
     margin-bottom: 50px;
 }
@@ -49,4 +56,8 @@
 }
 h3{
     text-align: left;
+=======
+.col-sm-4{
+    margin-bottom: 50px;
+>>>>>>> Release#2
 }
